@@ -8,9 +8,9 @@ public class GetInput
         List<int> list2 = new();
         foreach (string line in File.ReadAllLines("Year2024/Day01/input.txt"))
         {
-            string[] parts = line.Split(" ");
-            list1.Add(int.Parse(parts[0]));
-            list2.Add(int.Parse(parts[1]));
+            string[] parts = line.Split("   ");
+            list1.Add(int.Parse(parts[0].Trim()));
+            list2.Add(int.Parse(parts[1].Trim()));
         }
         list1.Sort();
         list2.Sort();

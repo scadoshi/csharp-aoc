@@ -4,6 +4,7 @@ public class Part02
 {
     public static int Run((List<int>, List<int>) input)
     {
+        int t = 0;
         Dictionary<int, int> dict1 = new();
         Dictionary<int, int> dict2 = new();
         (List<int> list1, List<int> list2) = input;

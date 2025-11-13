@@ -1,5 +1,5 @@
 namespace Aoc.Year2024.Day01;
-
+using System;
 public class Part01
 {
     public static int Run((List<int>, List<int>) input)
@@ -9,7 +9,7 @@ public class Part01
         int p = 0;
         do
         {
-            t += math.Abs(list1[p] - list2[p]);
+            t += Math.Abs(list1[p] - list2[p]);
             p++;
         } while (p < list1.Count());
         return t;
