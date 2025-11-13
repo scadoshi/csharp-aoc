@@ -2,7 +2,7 @@ namespace Aoc.Year2015.Day01;
 
 public class Part02
 {
-    public static int part_02(string input)
+    public static int Run(string input)
     {
         int f = 0;
         foreach (var (c, i) in input.Select((c, i) => (c, i)))
