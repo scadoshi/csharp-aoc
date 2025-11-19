@@ -1,11 +1,11 @@
-﻿using Aoc.Year2024.Day01;
+﻿using CSharpAoc.Year2015.Day02;
 
 DateTime startedAt = DateTime.Now;
-int result = Part01.Run(GetInput.Run());
+var result1 = Part01.Run(GetInput.Run());
 TimeSpan elapsed = DateTime.Now - startedAt;
-Console.WriteLine("part_one={0}, run_time={1}", result, elapsed);
+Console.WriteLine("part_one={0}, run_time={1}", result1, elapsed);
 
 startedAt = DateTime.Now;
-result = Part02.Run(GetInput.Run());
+var result2 = Part02.Run(GetInput.Run());
 elapsed = DateTime.Now - startedAt;
-Console.WriteLine("part_two={0}, run_time={1}", result, elapsed);
+Console.WriteLine("part_two={0}, run_time={1}", result2, elapsed);

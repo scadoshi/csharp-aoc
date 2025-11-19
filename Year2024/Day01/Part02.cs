@@ -1,4 +1,4 @@
-namespace Aoc.Year2024.Day01;
+namespace CSharpAoc.Year2024.Day01;
 
 public class Part02
 {
