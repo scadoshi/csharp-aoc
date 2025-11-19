@@ -1,6 +1,5 @@
 
 namespace CSharpAoc.Year2017.Day01;
-
 public class Part01
 {
     public static int Run(List<int> input)

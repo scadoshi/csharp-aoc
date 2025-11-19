@@ -1,5 +1,4 @@
 namespace CSharpAoc.Year2016.Day01;
-
 public class Instruction
 {
     public readonly Turning.Direction direction;

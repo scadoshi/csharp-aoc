@@ -1,5 +1,4 @@
 namespace CSharpAoc.Year2024.Day01;
-
 public class Part02
 {
     public static int Run((List<int>, List<int>) input)

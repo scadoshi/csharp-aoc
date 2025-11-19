@@ -1,5 +1,4 @@
 namespace CSharpAoc.Year2015.Day02;
-
 public class Giftbox
 {
     readonly int height;

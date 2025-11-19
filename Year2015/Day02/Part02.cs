@@ -1,5 +1,4 @@
 namespace CSharpAoc.Year2015.Day02;
-
 public class Part02
 {
     public static int Run(List<Giftbox> input)

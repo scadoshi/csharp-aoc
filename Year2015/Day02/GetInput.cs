@@ -1,5 +1,4 @@
 namespace CSharpAoc.Year2015.Day02;
-
 public class GetInput
 {
     public static List<Giftbox> Run()
