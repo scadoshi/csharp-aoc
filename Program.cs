@@ -1,4 +1,4 @@
-﻿using CSharpAoc.Year2018.Day01;
+﻿using CSharpAoc.Year2019.Day01;
 
 DateTime startedAt = DateTime.Now;
 var result1 = Part01.Run(GetInput.Run());
