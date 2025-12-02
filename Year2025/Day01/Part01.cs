@@ -3,7 +3,8 @@ public class Part01
 {
     public static int Run(List<int> input)
     {
-        int p = 50; int t = 0;
+        int p = 50;
+        int t = 0;
         foreach (int num in input)
         {
             p = (p + num) % 100;
