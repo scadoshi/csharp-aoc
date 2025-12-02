@@ -1,4 +1,5 @@
-namespace CSharpAoc.Year20YY.Day01;
+namespace CSharpAoc.Year2099.Day01;
+
 public class GetInput
 {
     public static int Run()
