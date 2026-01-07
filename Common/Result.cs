@@ -20,9 +20,9 @@ public abstract record Result<TValue, TError>
         {
             Success success => success.Value,
             Failure failure => throw new InvalidOperationException(
-                $"Cannot get success value (TValue) from a Failure. TError: {failure.Error}"
+                $"Cannot get Success value (TValue) from a Failure. TError: {failure.Error}"
             ),
-            _ => throw new InvalidOperationException("Unknown result state"),
+            _ => throw new InvalidOperationException("Unknown Result state"),
         };
     }
 }
