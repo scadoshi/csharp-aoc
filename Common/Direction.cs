@@ -12,12 +12,12 @@ public class Turn
 
     public Direction Dir;
 
-    public static Result<Direction, string> TryParse(Direction value)
+    public static Result<Direction, string> TryParse(Face.Direction value)
     {
         return value switch
         {
-            Direction.Left => Result<Direction, string>.Succ(Direction.Left),
-            Direction.Right => Result<Direction, string>.Succ(Direction.Right),
+            Face.Direction.Left => Result<Direction, string>.Succ(Direction.Left),
+            Face.Direction.Right => Result<Direction, string>.Succ(Direction.Right),
             _ => Result<Direction, string>.Fail($"{value} is not a valid Direction"),
         };
     }
