@@ -1,34 +1,40 @@
-namespace Common;
+namespace CSharpAoc.Common.Direction;
 
-public enum TurnDirection
-{
-    Left,
-    Right,
-}
+using CSharpAoc.Common.Result;
 
-public static class TurnDirectionExtensions
+public class Turn
 {
-    public static Result<TurnDirection, string> TryParse(Direction value)
+    public enum Direction
+    {
+        Left,
+        Right,
+    }
+
+    public Direction Dir;
+
+    public static Result<Direction, string> TryParse(Direction value)
     {
         return value switch
         {
-            Direction.Left => Result<TurnDirection, string>.Succ(TurnDirection.Left),
-            Direction.Right => Result<TurnDirection, string>.Succ(TurnDirection.Right),
-            _ => Result<TurnDirection, string>.Fail($"{value} is not a valid TurnDirection"),
+            Direction.Left => Result<Direction, string>.Succ(Direction.Left),
+            Direction.Right => Result<Direction, string>.Succ(Direction.Right),
+            _ => Result<Direction, string>.Fail($"{value} is not a valid Direction"),
         };
     }
 }
 
-public enum Direction
+public class Face
 {
-    Up,
-    Right,
-    Down,
-    Left,
-}
+    public enum Direction
+    {
+        Up,
+        Right,
+        Down,
+        Left,
+    }
 
-public static class DirectionExtensions
-{
+    public Direction Dir { get; set; }
+
     public static Result<Direction, string> TryParse(string value)
     {
         return value.ToLower() switch
@@ -53,26 +59,26 @@ public static class DirectionExtensions
         };
     }
 
-    public static Direction Turn(this Direction direction, TurnDirection turn)
+    public Direction Turn(Direction turn)
     {
         return turn switch
         {
-            TurnDirection.Right => direction switch
+            Direction.Right => this.Dir switch
             {
                 Direction.Up => Direction.Right,
                 Direction.Right => Direction.Down,
                 Direction.Down => Direction.Left,
                 Direction.Left => Direction.Up,
-                _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null),
+                _ => throw new ArgumentOutOfRangeException(nameof(this.Dir), this.Dir, null),
             },
 
-            TurnDirection.Left => direction switch
+            Direction.Left => this.Dir switch
             {
                 Direction.Up => Direction.Left,
                 Direction.Right => Direction.Up,
                 Direction.Down => Direction.Right,
                 Direction.Left => Direction.Down,
-                _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null),
+                _ => throw new ArgumentOutOfRangeException(nameof(this.Dir), this.Dir, null),
             },
 
             _ => throw new ArgumentOutOfRangeException(nameof(turn), turn, null),
