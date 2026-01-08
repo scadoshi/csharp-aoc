@@ -1,4 +1,4 @@
-namespace CSharpAoc.Common.Point.GridPoint;
+namespace CSharpAoc.Common;
 
 public class GridPoint
 {

@@ -1,6 +1,4 @@
-namespace CSharpAoc.Common.Direction;
-
-using CSharpAoc.Common.ResultHandling.Result;
+namespace CSharpAoc.Common;
 
 public class Turn
 {

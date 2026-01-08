@@ -1,4 +1,4 @@
-namespace CSharpAoc.Common.ResultHandling.Result;
+namespace CSharpAoc.Common;
 
 public abstract record Result<TValue, TError>
 {

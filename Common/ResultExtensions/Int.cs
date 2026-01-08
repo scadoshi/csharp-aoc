@@ -1,4 +1,4 @@
-namespace CSharpAoc.Common.Result;
+namespace CSharpAoc.Common;
 
 public static class IntExtensions
 {

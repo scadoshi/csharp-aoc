@@ -1,4 +1,4 @@
-namespace CSharpAoc.Common.Point.CartesianPoint;
+namespace CSharpAoc.Common;
 
 public class CartesianPoint
 {
