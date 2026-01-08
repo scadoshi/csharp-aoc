@@ -1,6 +1,6 @@
 namespace CSharpAoc.Common.Direction;
 
-using CSharpAoc.Common.Result;
+using CSharpAoc.Common.ResultHandling.Result;
 
 public class Turn
 {
@@ -10,15 +10,50 @@ public class Turn
         Right,
     }
 
-    public Direction Dir;
+    public Direction Dir { get; set; }
 
-    public static Result<Direction, string> TryParse(Face.Direction value)
+    public Turn(Turn.Direction dir)
+    {
+        Dir = dir;
+    }
+
+    public static Turn Left()
+    {
+        return new Turn(Turn.Direction.Left);
+    }
+
+    public static Turn Right()
+    {
+        return new Turn(Turn.Direction.Right);
+    }
+
+    public static Result<Turn, string> TryParse(Face.Direction value)
     {
         return value switch
         {
-            Face.Direction.Left => Result<Direction, string>.Succ(Direction.Left),
-            Face.Direction.Right => Result<Direction, string>.Succ(Direction.Right),
-            _ => Result<Direction, string>.Fail($"{value} is not a valid Direction"),
+            Face.Direction.Left => Result<Turn, string>.Succ(Turn.Left()),
+            Face.Direction.Right => Result<Turn, string>.Succ(Turn.Right()),
+            _ => Result<Turn, string>.Fail($"{value} is not a valid Direction"),
+        };
+    }
+
+    public static Result<Turn, string> TryParse(string value)
+    {
+        return value.ToLower() switch
+        {
+            "left" or "l" => Result<Turn, string>.Succ(Turn.Left()),
+            "right" or "r" => Result<Turn, string>.Succ(Turn.Right()),
+            _ => Result<Turn, string>.Fail($"{value} is not a valid Direction"),
+        };
+    }
+
+    public static Result<Turn, string> TryParse(char value)
+    {
+        return value switch
+        {
+            'l' or 'L' => Result<Turn, string>.Succ(Turn.Left()),
+            'r' or 'R' => Result<Turn, string>.Succ(Turn.Right()),
+            _ => Result<Turn, string>.Fail($"{value} is not a valid Direction"),
         };
     }
 }
@@ -35,27 +70,52 @@ public class Face
 
     public Direction Dir { get; set; }
 
-    public static Result<Direction, string> TryParse(string value)
+    public Face(Direction dir)
+    {
+        Dir = dir;
+    }
+
+    public static Face Up()
+    {
+        return new Face(Direction.Up);
+    }
+
+    public static Face Right()
+    {
+        return new Face(Direction.Right);
+    }
+
+    public static Face Down()
+    {
+        return new Face(Direction.Down);
+    }
+
+    public static Face Left()
+    {
+        return new Face(Direction.Left);
+    }
+
+    public static Result<Face, string> TryParse(string value)
     {
         return value.ToLower() switch
         {
-            "up" or "u" => Result<Direction, string>.Succ(Direction.Up),
-            "right" or "r" => Result<Direction, string>.Succ(Direction.Right),
-            "down" or "d" => Result<Direction, string>.Succ(Direction.Down),
-            "left" or "l" => Result<Direction, string>.Succ(Direction.Left),
-            _ => Result<Direction, string>.Fail($"{value} is not a valid Direction"),
+            "up" or "u" => Result<Face, string>.Succ(Face.Up()),
+            "right" or "r" => Result<Face, string>.Succ(Face.Right()),
+            "down" or "d" => Result<Face, string>.Succ(Face.Down()),
+            "left" or "l" => Result<Face, string>.Succ(Face.Left()),
+            _ => Result<Face, string>.Fail($"{value} is not a valid Face.Direction"),
         };
     }
 
-    public static Result<Direction, string> TryParse(char value)
+    public static Result<Face, string> TryParse(char value)
     {
         return value switch
         {
-            'u' or 'U' => Result<Direction, string>.Succ(Direction.Up),
-            'r' or 'R' => Result<Direction, string>.Succ(Direction.Right),
-            'd' or 'D' => Result<Direction, string>.Succ(Direction.Down),
-            'l' or 'L' => Result<Direction, string>.Succ(Direction.Left),
-            _ => Result<Direction, string>.Fail($"{value} is not a valid Direction"),
+            'u' or 'U' => Result<Face, string>.Succ(Face.Up()),
+            'r' or 'R' => Result<Face, string>.Succ(Face.Right()),
+            'd' or 'D' => Result<Face, string>.Succ(Face.Down()),
+            'l' or 'L' => Result<Face, string>.Succ(Face.Left()),
+            _ => Result<Face, string>.Fail($"{value} is not a valid Direction"),
         };
     }
 
