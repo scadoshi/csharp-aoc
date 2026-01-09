@@ -1,4 +1,4 @@
-using CSharpAoc.Year2025.Day02;
+using CSharpAoc.Year2016.Day01;
 
 var input = GetInput.Run();
 
