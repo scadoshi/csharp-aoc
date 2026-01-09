@@ -21,9 +21,16 @@ public class GridPoint
         return new GridPoint(this.Row, this.Col);
     }
 
-    public int DistanceFromOrigin()
+    public GridPoint Moved(Face face, int distance)
     {
-        return Math.Abs(this.Row) + Math.Abs(this.Col);
+        return face.Dir switch
+        {
+            Face.Direction.Up => new GridPoint(Math.Max(0, this.Row - 1), this.Col),
+            Face.Direction.Right => new GridPoint(this.Row, this.Col + 1),
+            Face.Direction.Down => new GridPoint(this.Row + 1, this.Col),
+            Face.Direction.Left => new GridPoint(this.Row, Math.Max(0, this.Col - 1)),
+            _ => throw new ArgumentOutOfRangeException(nameof(face.Dir), face.Dir, null),
+        };
     }
 
     public override bool Equals(object? obj)
