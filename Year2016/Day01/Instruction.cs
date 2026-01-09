@@ -1,27 +1,34 @@
 namespace CSharpAoc.Year2016.Day01;
 
-using CSharpAoc.Common.Direction;
+using CSharpAoc.Common;
 
 public class Instruction
 {
-    public readonly Turn.Direction turn;
-    public readonly int distance;
+    public readonly Turn Turn;
+    public readonly int Distance;
 
-    public Instruction(Turn.Direction turn, int distance)
+    public Instruction(Turn turn, int distance)
     {
-        this.turn = turn;
-        this.distance = distance;
+        Turn = turn;
+        Distance = distance;
     }
 
-    public static Instruction Parse(string value)
+    public static Result<Instruction, string> TryParse(string value)
     {
-        // e.g. "R5"
+        // e.g. "L69"
         char[] chars = value.ToCharArray();
-        char directionChar = chars[0];
-        var face = Face.TryParse(directionChar).GetOrThrow();
-        var turn = Turn.TryParse(face).GetOrThrow();
-        string distanceString = new string(chars[1..]);
-        int distance = int.Parse(distanceString);
-        return new Instruction(turn, distance);
+        if (chars.Length < 2)
+        {
+            return Result<Instruction, string>.Fail($"{value} is not a valid Instruction");
+        }
+
+        return Turn.TryParse(chars[0])
+            .Bind(turn =>
+                new string(chars[1..])
+                    .TryParse()
+                    .Bind(distance =>
+                        Result<Instruction, string>.Succ(new Instruction(turn, distance))
+                    )
+            );
     }
 }
