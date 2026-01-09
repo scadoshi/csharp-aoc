@@ -117,25 +117,25 @@ public class Face
         };
     }
 
-    public Direction Turn(Direction turn)
+    public Face Rotated(Turn.Direction turn)
     {
         return turn switch
         {
-            Direction.Right => this.Dir switch
+            Turn.Direction.Right => this.Dir switch
             {
-                Direction.Up => Direction.Right,
-                Direction.Right => Direction.Down,
-                Direction.Down => Direction.Left,
-                Direction.Left => Direction.Up,
+                Direction.Up => new Face(Direction.Right),
+                Direction.Right => new Face(Direction.Down),
+                Direction.Down => new Face(Direction.Left),
+                Direction.Left => new Face(Direction.Up),
                 _ => throw new ArgumentOutOfRangeException(nameof(this.Dir), this.Dir, null),
             },
 
-            Direction.Left => this.Dir switch
+            Turn.Direction.Left => this.Dir switch
             {
-                Direction.Up => Direction.Left,
-                Direction.Right => Direction.Up,
-                Direction.Down => Direction.Right,
-                Direction.Left => Direction.Down,
+                Direction.Up => new Face(Direction.Left),
+                Direction.Right => new Face(Direction.Up),
+                Direction.Down => new Face(Direction.Right),
+                Direction.Left => new Face(Direction.Down),
                 _ => throw new ArgumentOutOfRangeException(nameof(this.Dir), this.Dir, null),
             },
 
