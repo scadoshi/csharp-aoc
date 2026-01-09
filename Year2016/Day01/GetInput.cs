@@ -6,7 +6,10 @@ public class GetInput
     {
         return File.ReadAllText("Year2016/Day01/input.txt")
             .Split(",")
-            .Select(instructionString => Instruction.TryParse(instructionString).PromiseSuccess())
+            .Where(instructionString => instructionString.Trim() != "")
+            .Select(instructionString =>
+                Instruction.TryParse(instructionString.Trim()).PromiseSuccess()
+            )
             .ToArray();
     }
 }

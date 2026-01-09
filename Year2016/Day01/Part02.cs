@@ -1,26 +1,27 @@
 namespace CSharpAoc.Year2016.Day01;
+
+using CSharpAoc.Common;
+
 public class Part02
 {
-    public static int? Run(List<Instruction> input)
+    public static int? Run(Instruction[] input)
     {
-        DirectionalPoint directionalPoint = DirectionalPoint.Start();
-        HashSet<Point> visited = new() { directionalPoint.point.Clone() };
-        foreach (Instruction instruction in input)
-        {
-            directionalPoint.Turn(instruction.direction);
-            foreach (int i in Enumerable.Range(0, instruction.distance))
-            {
-                directionalPoint.Step();
-                if (visited.Contains(directionalPoint.point))
-                {
-                    return directionalPoint.point.DistanceFromOrigin();
-                }
-                else
-                {
-                    visited.Add(directionalPoint.point.Clone());
-                }
-            }
+        var directionalPoint = DirectionalPoint.Start();
+        var visited = new HashSet<CartesianPoint>();
+        visited.Add(directionalPoint.Point);
 
+        foreach (var instruction in input)
+        {
+            directionalPoint.Rotate(instruction.Turn);
+            for (int i = 1; i <= instruction.Distance; i++)
+            {
+                directionalPoint.Move(1);
+                if (visited.Contains(directionalPoint.Point))
+                {
+                    return directionalPoint.Point.DistanceFromOrigin();
+                }
+                visited.Add(directionalPoint.Point);
+            }
         }
         return null;
     }
