@@ -1,9 +1,31 @@
 namespace CSharpAoc.Year2016.Day02;
 
+using CSharpAoc.Common;
+
 public class Part02
 {
-    public static int Run(int input)
+    public static string Run(Face[][] input)
     {
-        return 0;
+        {
+            return input
+                .Aggregate(
+                    ("", Keypad.Weird()),
+                    ((string, Keypad) acc, Face[] instructions) =>
+                    {
+                        var (code, keypad) = acc;
+                        var newKeypad = instructions.Aggregate(
+                            keypad,
+                            (k, face) =>
+                            {
+                                k.MoveFinger(face, 1);
+                                return k;
+                            }
+                        );
+                        var key = newKeypad.Grid[newKeypad.Finger.Row, newKeypad.Finger.Col];
+                        return (code + key, newKeypad);
+                    }
+                )
+                .Item1;
+        }
     }
 }
