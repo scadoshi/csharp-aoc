@@ -42,11 +42,11 @@ public class Keypad
     public void MoveFinger(Face face, int distance)
     {
         var newPoint = this.Finger.Moved(face, distance);
-        if (newPoint.Row >= this.Grid.GetLength(0))
-        {
-            return;
-        }
-        if (newPoint.Col >= this.Grid.GetLength(1))
+        if (
+            newPoint.Row >= this.Grid.GetLength(0)
+            || newPoint.Col >= this.Grid.GetLength(1)
+            || this.Grid[newPoint.Row, newPoint.Col] == null
+        )
         {
             return;
         }
