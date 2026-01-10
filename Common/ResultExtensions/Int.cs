@@ -8,4 +8,9 @@ public static class IntExtensions
             ? Result<int, string>.Succ(num)
             : Result<int, string>.Fail($"{value} is not a valid int");
     }
+
+    public static Result<int, string> TryParse(this char value)
+    {
+        return IntExtensions.TryParse(value.ToString());
+    }
 }
